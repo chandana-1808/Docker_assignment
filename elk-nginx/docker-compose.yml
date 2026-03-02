@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+
+  nginx:
+    build: ./nginx
+    container_name: nginx
+    ports:
+      - "80:80"
+    networks:
+      - elk
+
+  elasticsearch:
+    build: ./elasticsearch
+    container_name: elasticsearch
+    ports:
+      - "9200:9200"
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    networks:
+      - elk
+
+  kibana:
+    build: ./kibana
+    container_name: kibana
+    ports:
+      - "5601:5601"
+    depends_on:
+      - elasticsearch
+    networks:
+      - elk
+
+  filebeat:
+    build: ./filebeat
+    container_name: filebeat
+    user: root
+    volumes:
+      - /var/lib/docker/containers:/var/lib/docker/containers:ro
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    depends_on:
+      - elasticsearch
+      - nginx
+    networks:
+      - elk
+
+networks:
+  elk:
