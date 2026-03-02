@@ -1,6 +1,6 @@
-# 🚀 ELK Stack (Elasticsearch + Filebeat + Kibana) with Nginx Monitoring
+#  ELK Stack (Elasticsearch + Filebeat + Kibana) with Nginx Monitoring
 
-## 📌 Project Overview
+##  Project Overview
 
 This project demonstrates centralized log collection and visualization using the ELK Stack.
 
@@ -15,7 +15,7 @@ The entire setup is containerized using Docker Compose.
 
 ---
 
-## 🏗️ Architecture
+##  Architecture
 
 Nginx → Filebeat → Elasticsearch → Kibana
 
@@ -39,13 +39,13 @@ Kibana	http://localhost:5601
 
 Elasticsearch	http://localhost:9200
 
-## 🔐 Kibana Login Credentials
+##  Kibana Login Credentials
 
 Username: elastic
 
 Password: changeme%
 
-## 📊 Viewing Logs in Kibana
+## Viewing Logs in Kibana
 
 Open http://localhost:5601
 
